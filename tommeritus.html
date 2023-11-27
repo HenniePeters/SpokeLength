@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <title>Tommeritus magnificus</title>
+    <style>
+    html { font-family: 'Dejavu Sans', Verdana; background-color:#20FF20; }
+    .inputfield  { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
+    .inputfield2 { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
+    .inputfield3 { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
+    .inputfield4 { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
+    .inputfield5 { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
+    .inputfield6 { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
+    .output     { font-size:18px; color:black; background-color:#D8D8D8; border-style:solid; border-color: #A0A0A0; border-width: 1px; }
+    .small      { font-size:8px; }
+    </style>
+  </head>
+  <body onload="display()" style="background-color:#20FF20">
+      <table style="color:#404040">
+        <tr>
+          <td colspan="2" style="font-size:28px;"><b>Spoke length calculator</b></td>
+        </tr><tr>
+          <td colspan="2" style="font-size:22px;"><b>Insert values:</b></td>
+        </tr><tr>
+          <td colspan="2" >Provide all values to start the calculation</td>
+        </tr><tr class="small" >
+          <td>&nbsp;</td>
+        </tr><tr>
+          <td><label class="label" for="total-length-hub">Total hub length:</label></td>
+          <td><input onchange="display()" class="inputfield" size="5" id="total-length-hub" type="tel" value='130' />&nbsp;mm</td>
+        </tr><tr>
+          <td><label class="label" for="non-gear-side">Non-gear side:</label></td>
+          <td><input onchange="display()" class="inputfield" size="5" id="non-gear-side" type="tel" value='33.85' />&nbsp;mm</td>
+        </tr><tr>
+          <td><label class="label" for="gear-side">Gear side:</label></td>
+          <td><input onchange="display()" class="inputfield" size="5" id="gear-side" type="tel" value='41.55' />&nbsp;mm</td>
+        </tr><tr class="small" >
+          <td>&nbsp;</td>
+        </tr><tr>
+          <td><label class="label" for="hub-diameter-non-gear">Hub diameter non-gear side:</label></td>
+          <td><input onchange="display()" class="inputfield" size="5" id="hub-diameter-non-gear" type="tel" value='87' />&nbsp;mm</td>
+        </tr><tr>
+          <td><label class="label" for="hub-diameter-gear">Hub diameter gear side:</label></td>
+          <td><input onchange="display()" class="inputfield" size="5" id="hub-diameter-gear" type="tel" value='87' />&nbsp;mm</td>
+        </tr><tr class="small" >
+          <td>&nbsp;</td>
+        </tr><tr>
+          <td><label class="label" for="internal-diameter">Internal rim diameter:</label></td>
+          <td><input onchange="display()" class="inputfield" size="5" id="internal-diameter" type="tel" value='584' />&nbsp;mm</td>
+        </tr><tr>
+          <td><label class="label" for="rim-thickness">Rim thickness:</label></td>
+          <td><input onchange="display()" class="inputfield" size="5" id="rim-thickness" type="tel" value='2' />&nbsp;mm</td>
+        </tr><tr class="small" >
+          <td>&nbsp;</td>
+        </tr><tr>
+          <td><label class="label" for="number-of-spokes">Number of spokes:</label></td>
+          <td><input onchange="display()" class="inputfield" size="5" id="number-of-spokes" type="tel" value='36' /><br /></td>
+        </tr><tr>
+          <td><label class="label" for="number-of-crossings">Nr. of crossings gear side:</label></td>
+          <td><input onchange="display()" class="inputfield" size="5" id="number-of-crossings" type="tel" value='3' /></td>
+        </tr><tr>
+          <td><label class="label" for="number-of-crossings-non-gear">Nr. of crossings non-gear side:</label></td>
+          <td><input onchange="display()" class="inputfield" size="5" id="number-of-crossings-non-gear" type="tel" value='3' /></td>
+        </tr><tr class="small" >
+          <td>&nbsp;</td>
+        </tr><tr>
+          <td><label class="label" for="spokes-per-group">Nr. of spokes per group:</label></td>
+          <td><input onchange="display()" class="inputfield" size="5" id="spokes-per-group" type="tel" value='1' /><br></td>
+        </tr><tr id="validation-text4">
+          <td colspan="2" style="color:blue;visibility='collapse'">Valid numbers: 1,2,3,4,6</td>
+        </tr><tr id="validation-text6">
+          <td colspan="2" style="color:blue;visibility='collapse'">"NumberOfSpokes" should be a<br>multiple of "SpokesPerGroup".</td>
+        </tr><tr>
+          <td colspan="2" id="distance" style="visibility='collapse'"></td>
+        </tr><tr id="distance2a" style="visibility='collapse'">
+          <td colspan="2">Spoke 1<input onchange="display()" type="radio" id="gear"    name="side">        <label class="label" for="gear">gear side</label>
+                                 <input onchange="display()" type="radio" id="nongear" name="side" checked><label class="label" for="nongear">non-gear side</label>
+          </td>
+
+        </tr><tr id="distance2b" style="visibility='collapse'">
+          <td><label class="label" for="distance12">Distance between spokes 1-2:</label></td>
+          <td><input onchange="display()" class="inputfield2" size="5" id="distance12" type="tel" /><br></td>
+
+        </tr><tr id="distance2c" style="visibility='collapse'">
+          <td>Spoke 2</td></p>
+
+        </tr><tr id="distance3a" style="visibility='collapse'">
+          <td><label class="label" for="distance23">Distance between spokes 2-3:</label></td>
+          <td><input onchange="display()" class="inputfield3" size="5" id="distance23" type="tel" /><br></td>
+
+        </tr><tr id="distance3b" style="visibility='collapse'">
+          <td>Spoke 3</td>
+
+        </tr><tr id="distance4a" style="visibility='collapse'">
+          <td><label class="label" for="distance34">Distance between spokes 3-4:</label></td>
+          <td><input onchange="display()" class="inputfield4" size="5" id="distance34" type="tel" /><br></td>
+
+        </tr><tr id="distance4b" style="visibility='collapse'">
+          <td>Spoke 4</td>
+
+        </tr><tr id="distance6a" style="visibility='collapse'">
+          <td><label class="label" for="distance45">Distance between spokes 4-5:</label></td>
+          <td><input onchange="display()" class="inputfield6" size="5" id="distance45" type="tel" /><br></td>
+
+        </tr><tr id="distance6b" style="visibility='collapse'">
+          <td>Spoke 5</td>
+
+        </tr><tr id="distance6c" style="visibility='collapse'">
+          <td><label class="label" for="distance56">Distance between spokes 5-6:</label></td>
+          <td><input onchange="display()" class="inputfield6" size="5" id="distance56" type="tel" /><br></td>
+
+        </tr><tr id="distance6d" style="visibility='collapse'">
+          <td>Spoke 6</td>
+
+        </tr><tr class="small" >
+          <td>&nbsp;</td>
+        </tr><tr>
+          <td id="validation-text2" style="color:red;visibility='hidden'">Missing value(s)!</td>
+          <td><input disabled onclick="display()" id="button-calculate" name="" type="button" value="Calculate" /></td>
+        </tr><tr id="validation-text3" style="color:blue;visibility='collapse'">
+          <td colspan="2">Not a number!</td>
+        </tr><tr id="validation-text5" style="visibility='collapse'">
+          <td colspan="2" id="distTooLarge" style="color:blue">Distance too large!</td>
+        </tr><tr>
+          <td colspan="2" style="font-size:22px;"><b>Spoke lengths:</b></td>
+        <!-- calculation result -->
+        </tr><tr id="resultLineA">
+          <td><label id="lblResA">Spoke 1:</label></td>
+          <td><input disabled class="output" id="resultA" size="5" type="text" />&nbsp;mm</td>
+        </tr><tr id="resultLineB">
+          <td><label id="lblResB">Spoke 2:</label></td>
+          <td><input disabled class="output" id="resultB" size="5" type="text" />&nbsp;mm</td>
+        </tr><tr id="resultLineC" style="visibility='collapse';">
+          <td><label id="lblResC">Spoke 3:</label></td>
+          <td><input disabled class="output" id="resultC" size="5" type="text" />&nbsp;mm</td>
+        </tr><tr id="resultLineD" style="visibility='collapse';">
+          <td><label id="lblResD">Spoke 4:</label></td>
+          <td><input disabled class="output" id="resultD" size="5" type="text" />&nbsp;mm</td>
+        </tr><tr id="resultLineE" style="visibility='collapse';">
+          <td><label id="lblResE">Spoke 5:</label></td>
+          <td><input disabled class="output" id="resultE" size="5" type="text" />&nbsp;mm</td>
+        </tr><tr id="resultLineF" style="visibility='collapse';">
+          <td><label id="lblResF">Spoke 6:</label></td>
+          <td><input disabled class="output" id="resultF" size="5" type="text" />&nbsp;mm</td>
+        <!-- messages -->
+        </tr><tr id="validation-text1a" style="visibility='collapse';">
+          <td colspan="2" style="color:red">Please provide the fields marked in red.</td>
+        </tr><tr id="validation-text1b" style="visibility='collapse';">
+          <td colspan="2" style="color:blue">Please correct the fields marked in blue.</td>
+        </tr>
+      </table>
+    <script type="text/javascript">
+
+function display() {
+    document.getElementById("button-calculate").disabled = true;
+    if( validate() ) {
+        var A   /*totalLengthHub*/      = parseFloat(document.getElementById("total-length-hub").value.replace(',', '.'));
+        var Ka  /*nonGearSide*/         = parseFloat(document.getElementById("non-gear-side").value.replace(',', '.'));
+        var Kb  /*gearSide*/            = parseFloat(document.getElementById("gear-side").value.replace(',', '.'));
+        var D1a /*diameterNonGearSide*/ = parseFloat(document.getElementById("hub-diameter-non-gear").value.replace(',', '.'));
+        var D1b /*diameterGearSide*/    = parseFloat(document.getElementById("hub-diameter-gear").value.replace(',', '.'));
+        var D   /*internalDiameterRim*/ = parseFloat(document.getElementById("internal-diameter").value.replace(',', '.'));
+        var Dr  /*rimThickness*/        = parseFloat(document.getElementById("rim-thickness").value.replace(',', '.'));
+        var N   /*numberSpokes*/        = parseFloat(document.getElementById("number-of-spokes").value);
+        var Ca  /*crossingsGear*/       = parseFloat(document.getElementById("number-of-crossings").value);
+        var Cb  /*crossingsNonGear*/    = parseFloat(document.getElementById("number-of-crossings-non-gear").value);
+        var M   /*spg*/                 = parseFloat(document.getElementById("spokes-per-group").value);
+        var flip                         = (document.getElementById("gear").checked?true:false);
+        var spg = M;
+        var Sb  = (flip==true) ? 0 : 1;  //Sb = 0 first spoke on gear side, Sb = 1 first spoke on non-gear
+        // initial calculations
+        var Za = A/2 - Ka /*Umbrella heigth non-gear*/
+        var Zb = A/2 - Kb /*Umbrella heigth gear*/
+        var ra = D1a/2    /*Hub radius non-gear*/
+        var rb = D1b/2    /*Hub radius non-gear*/
+        var R = D/2 + Dr  /*Rim radius (outer side)*/
+        var N2 = N / 2;
+        var Delta = ( Math.PI * D/*internalDiameterRim*/ ) / N/*numberSpokes*/;
+        var r = [];
+        var Z = [];
+        var C = [];
+        var X = [];
+        var distance = [];
+        var Kfactor = [];
+        var Length = [];
+        console.log("ingevoerd:");
+        console.log("A       = "+A  );
+        console.log("Ka      = "+Ka );
+        console.log("Kb      = "+Kb );
+        console.log("D1a     = "+D1a);
+        console.log("D1b     = "+D1b);
+        console.log("D       = "+D  );
+        console.log("Dr      = "+Dr );
+        console.log("N       = "+N  );
+        console.log("Ca      = "+Ca );
+        console.log("Cb      = "+Cb );
+        console.log("M       = "+M  );
+        console.log("spg     = "+spg);
+        console.log("Sb      = "+Sb );
+        distance[0] = parseFloat( document.getElementById("distance12").value );
+        distance[1] = parseFloat( document.getElementById("distance23").value );
+        distance[2] = parseFloat( document.getElementById("distance34").value );
+        distance[3] = parseFloat( document.getElementById("distance45").value );
+        distance[4] = parseFloat( document.getElementById("distance56").value );
+        console.log( "distance[0] = " + distance[0] );
+        console.log( "distance[1] = " + distance[1] );
+        console.log( "distance[2] = " + distance[2] );
+        console.log( "distance[3] = " + distance[3] );
+        console.log( "distance[4] = " + distance[4] );
+        console.log( "-------------------------");
+        console.log("berekend:");
+        console.log("Za      = "+Za );
+        console.log("Zb      = "+Zb );
+        console.log("ra      = "+ra );
+        console.log("rb      = "+rb );
+        console.log("R       = "+R  );
+        console.log("Delta   = "+Delta  );
+        console.log("Delta/2 = "+Delta/2  );
+        //--------------------------------------------------------------
+        // Filling arrays hub radius r, height Z and crossings C
+        if( Sb == 0 ) { // First spoke on gear side
+            for( i2 = 0; i2 < N2; i2++ ) { // do i2 = 1, N2
+                i = 2 * ( i2 - 1 );
+                r[i + 1] = rb;  // Hub radius
+                r[i + 2] = ra;
+                Z[i + 1] = Zb;  // Hub Heigth
+                Z[i + 2] = Za;
+                C[i + 1] = Cb;  // Crossings
+                C[i + 2] = Ca;
+            }
+        } else { // First spoke on non-gear side
+            for( i2 = 0; i2 < N2; i2++ ) { // do i2 = 1, N2
+                i = 2 * ( i2 - 1 );  // Flip parameters
+                r[i + 1] = ra;
+                r[i + 2] = rb;
+                Z[i + 1] = Za;
+                Z[i + 2] = Zb;
+                C[i + 1] = Ca;
+                C[i + 2] = Cb;
+            }
+        }
+        N4 = N / 4;
+        for( i4 = 0; i4 < N4; i4++ ) {
+            i = 4 * ( i4 );
+            C[i+2] = -C[i+2]; // spokes 3 and 4 have opposite signs
+            C[i+3] = -C[i+3];
+        }
+        //--------------------------------------------------------------
+        // Fill positions X
+        var Width = 0;
+        for( i = 0; i < M-1; i++ ) { //do i = 1, M-1
+            Width = Width + distance[i];
+        }
+        distance[M-1] = M * Delta - Width; // The missing Distance
+
+        console.log( "-------------------------");
+        k = 0;
+        var NG = N / M;                   // NG = Number of groups
+        for( j = 0; j < NG; j++ ) { // do j = 1, NG
+            for( i = 0; i < M; i++ ) { // do i = 1, M
+                k = k + 1;
+                distance[k] = distance[i] // Fill all distances
+            }
+        }
+        X[0] = 0;
+       	for( i = 1; i < N; i++ ) { //do i = 2, N
+            X[i] = X[i-1] + distance[i-1] // Calculate positions
+	}
+        for( i = 0; i < N; i++ ) { //do i = 2, N
+            console.log( "X[" + i + "] = " + X[i] );
+            console.log( "r[" + i + "] = " + r[i] );
+            console.log( "Z[" + i + "] = " + Z[i] );
+            console.log( "C[" + i + "] = " + C[i] );
+        }
+
+        // The middle of two nearest hub-holes (gear and non-gear)
+        // is aligned towards position Offset on the rim
+
+        h = 1; // Offset_index; ################################################# invoer maken
+        var Offset = ( X[h] + X[h+1] ) / 2;
+        console.log( "Offset=" + Offset );
+        //--------------------------------------------------------------
+        // Spoke length calculation
+        for( j = 0; j < N; j++ ) { // do j = 1, N
+            i = j-h;
+            nj = ( 2 * i+1 ) / 4 + Offset / ( 2 * Delta );
+            Kfactor[j] = C[j] + nj - X[j] / ( 2 * Delta );
+            //Beta = de_ra( Kfactor[j] * 720 ) / N;
+            Beta = Kfactor[j] * 4 * Math.PI / N;
+            var tmp1 = Math.pow(R,2) + Math.pow(r[i],2) + Math.pow(Z[i],2);
+	    var tmp2 = 2 * R * r[i] * Math.cos(Beta);
+	    console.log( "j:"+j);
+	    console.log( "i:"+i);
+	    console.log( "tmp1:" + tmp1 );
+	    console.log( "tmp2:" + tmp2 );
+            L2 = Math.pow(R,2) + Math.pow(r[i],2) + Math.pow(Z[i],2) - 2 * R * r[i] * Math.cos(Beta);  // Three-dimensional Pythagoras / Cosine rule
+            Length[j] = Math.sqrt(L2);
+            console.log( "------------------------");
+            console.log( "j         = " + j );
+            console.log( "i         = "+i);
+            console.log( "nj        = "+nj);
+            console.log( "Kfactor[j]= "+Kfactor[j]);
+            console.log( "Beta      = "+Beta);
+            console.log( "L2        = "+L2);
+            console.log( "Length[j] = "+Length[j]);
+        }
+        //--------------------------------------------------------------
+        // show applicable fields
+        if( spg > 1 ) {
+            document.getElementById("number-of-crossings-non-gear").disabled = true;
+            document.getElementById("number-of-crossings-non-gear").value = document.getElementById("number-of-crossings").value.replace(',', '.')
+            document.getElementById("number-of-crossings-non-gear").style.background = "#D8D8D8";
+        } else {
+            document.getElementById("number-of-crossings-non-gear").disabled = false;
+            document.getElementById("number-of-crossings-non-gear").style.background = "#FFFFFF";
+        }
+
+        if( spg == 1 ) {
+            document.getElementById("resultA").value = Length[1].toFixed(0);
+            document.getElementById("resultB").value = Length[2].toFixed(0);
+            document.getElementById("resultC").value = Length[3].toFixed(0);
+            document.getElementById("resultD").value = Length[4].toFixed(0);
+
+            document.getElementById("lblResA").innerHTML = "Spoke 1:";
+            document.getElementById("lblResB").innerHTML = "Spoke 2:";
+            document.getElementById("lblResC").innerHTML = "Spoke 3:";
+            document.getElementById("lblResD").innerHTML = "Spoke 4:";
+            document.getElementById("resultLineA").style.visibility = "visible";
+            document.getElementById("resultLineB").style.visibility = "visible";
+            document.getElementById("resultLineC").style.visibility = "visible";
+            document.getElementById("resultLineD").style.visibility = "visible";
+            document.getElementById("resultLineE").style.visibility = "collapse";
+            document.getElementById("resultLineF").style.visibility = "collapse";
+        } else if( spg == 2 ) {
+            document.getElementById("resultA").value = Length[1].toFixed(0);
+            document.getElementById("resultB").value = Length[2].toFixed(0);
+            document.getElementById("resultC").value = Length[3].toFixed(0);
+            document.getElementById("resultD").value = Length[4].toFixed(0);
+
+            document.getElementById("resultLineA").style.visibility = "visible";
+            document.getElementById("resultLineB").style.visibility = "visible";
+            document.getElementById("resultLineC").style.visibility = "visible";
+            document.getElementById("resultLineD").style.visibility = "visible";
+            document.getElementById("resultLineE").style.visibility = "collapse";
+            document.getElementById("resultLineF").style.visibility = "collapse";
+            document.getElementById("lblResA").innerHTML = "Spoke 1 ("+ N/4 +"x) "+ (flip?"gear":"non-gear") +" side:";
+            document.getElementById("lblResB").innerHTML = "Spoke 2 ("+ N/4 +"x) "+ (flip?"non-gear":"gear") +" side:";
+            document.getElementById("lblResC").innerHTML = "Spoke 3 ("+ N/4 +"x) "+ (flip?"gear":"non-gear") +" side:";
+            document.getElementById("lblResD").innerHTML = "Spoke 4 ("+ N/4 +"x) "+ (flip?"non-gear":"gear") +" side:";
+        } else if( spg == 3 ) {
+            document.getElementById("resultC").value = Length[1].toFixed(0);
+            document.getElementById("resultD").value = Length[2].toFixed(0);
+            document.getElementById("resultB").value = Length[3].toFixed(0);
+            document.getElementById("resultE").value = Length[4].toFixed(0);
+            document.getElementById("resultA").value = Length[5].toFixed(0);
+            document.getElementById("resultF").value = Length[6].toFixed(0);
+
+            document.getElementById("resultLineA").style.visibility = "visible";
+            document.getElementById("resultLineB").style.visibility = "visible";
+            document.getElementById("resultLineC").style.visibility = "visible";
+            document.getElementById("resultLineD").style.visibility = "visible";
+            document.getElementById("resultLineE").style.visibility = "visible";
+            document.getElementById("resultLineF").style.visibility = "visible";
+            document.getElementById("lblResA").innerHTML = "Spoke 1 ("+ N/spg +"x) "+ (flip?"gear":"non-gear") +" side:";
+            document.getElementById("lblResB").innerHTML = "Spoke 2 ("+ N/spg +"x) "+ (flip?"non-gear":"gear") +" side:";
+            document.getElementById("lblResC").innerHTML = "Spoke 3 ("+ N/spg +"x) "+ (flip?"gear":"non-gear") +" side:";
+            document.getElementById("lblResD").innerHTML = "Spoke 4 ("+ N/spg +"x) "+ (flip?"non-gear":"gear") +" side:";
+            document.getElementById("lblResE").innerHTML = "Spoke 5 ("+ N/spg +"x) "+ (flip?"gear":"non-gear") +" side:";
+            document.getElementById("lblResF").innerHTML = "Spoke 6 ("+ N/spg +"x) "+ (flip?"non-gear":"gear") +" side:";
+        } else if( spg == 4 ) {
+            document.getElementById("resultA").value = Length[0].toFixed(0);
+            document.getElementById("resultB").value = Length[1].toFixed(0);
+            document.getElementById("resultC").value = Length[2].toFixed(0);
+            document.getElementById("resultD").value = Length[3].toFixed(0);
+
+            document.getElementById("resultLineA").style.visibility = "visible";
+            document.getElementById("resultLineB").style.visibility = "visible";
+            document.getElementById("resultLineC").style.visibility = "visible";
+            document.getElementById("resultLineD").style.visibility = "visible";
+            document.getElementById("resultLineE").style.visibility = "collapse";
+            document.getElementById("resultLineF").style.visibility = "collapse";
+            document.getElementById("lblResA").innerHTML = "Spoke 1 ("+ N/spg +"x) "+ (flip?"gear":"non-gear") +" side:";
+            document.getElementById("lblResB").innerHTML = "Spoke 2 ("+ N/spg +"x) "+ (flip?"non-gear":"gear") +" side:";
+            document.getElementById("lblResC").innerHTML = "Spoke 3 ("+ N/spg +"x) "+ (flip?"gear":"non-gear") +" side:";
+            document.getElementById("lblResD").innerHTML = "Spoke 4 ("+ N/spg +"x) "+ (flip?"non-gear":"gear") +" side:";
+        } else if( spg == 6 ) {
+            document.getElementById("resultC").value = Length[1].toFixed(0);
+            document.getElementById("resultD").value = Length[2].toFixed(0);
+            document.getElementById("resultB").value = Length[3].toFixed(0);
+            document.getElementById("resultE").value = Length[4].toFixed(0);
+            document.getElementById("resultA").value = Length[5].toFixed(0);
+            document.getElementById("resultF").value = Length[6].toFixed(0);
+
+            document.getElementById("resultLineA").style.visibility = "visible";
+            document.getElementById("resultLineB").style.visibility = "visible";
+            document.getElementById("resultLineC").style.visibility = "visible";
+            document.getElementById("resultLineD").style.visibility = "visible";
+            document.getElementById("resultLineE").style.visibility = "visible";
+            document.getElementById("resultLineF").style.visibility = "visible";
+            document.getElementById("lblResA").innerHTML = "Spoke 1 ("+ N/spg +"x) "+ (flip?"gear":"non-gear") +" side:";
+            document.getElementById("lblResB").innerHTML = "Spoke 2 ("+ N/spg +"x) "+ (flip?"non-gear":"gear") +" side:";
+            document.getElementById("lblResC").innerHTML = "Spoke 3 ("+ N/spg +"x) "+ (flip?"gear":"non-gear") +" side:";
+            document.getElementById("lblResD").innerHTML = "Spoke 4 ("+ N/spg +"x) "+ (flip?"non-gear":"gear") +" side:";
+            document.getElementById("lblResE").innerHTML = "Spoke 5 ("+ N/spg +"x) "+ (flip?"gear":"non-gear") +" side:";
+            document.getElementById("lblResF").innerHTML = "Spoke 6 ("+ N/spg +"x) "+ (flip?"non-gear":"gear") +" side:";
+        }
+        // all valid now, calculation button is available
+        document.getElementById("button-calculate").disabled = false;
+    }
+}
+
+function validate() {
+    var retval = true;
+    document.getElementById("resultLineA").style.visibility = "collapse";
+    document.getElementById("resultLineB").style.visibility = "collapse";
+    document.getElementById("resultLineC").style.visibility = "collapse";
+    document.getElementById("resultLineD").style.visibility = "collapse";
+    document.getElementById("resultLineE").style.visibility = "collapse";
+    document.getElementById("resultLineF").style.visibility = "collapse";
+    var spg    = document.getElementById("spokes-per-group");
+    var nos    = document.getElementById("number-of-spokes");
+    var msg1a  = document.getElementById("validation-text1a");
+    var msg1b  = document.getElementById("validation-text1b");
+    var msg2   = document.getElementById("validation-text2");
+    var msg3   = document.getElementById("validation-text3");
+    var msg4   = document.getElementById("validation-text4");
+    var msg5   = document.getElementById("validation-text5");
+    var msg6   = document.getElementById("validation-text6");
+    var fields  = document.getElementsByClassName('inputfield');
+    var labels = document.getElementsByClassName('label');
+    msg1a.style.visibility = "collapse";
+    msg1b.style.visibility = "collapse";
+    msg2.style.visibility  = "hidden"; // this line should stay visible, as it contains the calc. button
+    msg3.style.visibility  = "collapse";
+    msg4.style.visibility  = "collapse";
+    msg5.style.visibility  = "collapse";
+    msg6.style.visibility  = "collapse";
+    spg.value = spg.value.trim().replace(',', '.');
+
+    // check all required fields
+    switch( spg.value ) {
+        case "2":
+            fieldclass = ".inputfield, .inputfield2";
+            break;
+        case "3":
+            fieldclass = ".inputfield, .inputfield2, .inputfield3";
+            break;
+        case "4":
+            fieldclass = ".inputfield, .inputfield2, .inputfield3, .inputfield4";
+            break;
+        case "6":
+            fieldclass = ".inputfield, .inputfield2, .inputfield3, .inputfield4, .inputfield6";
+            break;
+        default:
+            fieldclass = ".inputfield";
+    }
+    var fields = document.querySelectorAll(fieldclass);
+    //console.log(fieldclass );
+    //for( var i=0; i<fields.length; i++ ) {
+    //    console.log( fields[i].id );
+    //}
+    for( var i=0; i<fields.length; i++ ) {
+        fields[i].value = fields[i].value.trim();
+        for( var j = 0; j < labels.length; j++ ) {
+            if( labels[j].htmlFor == fields[i].id ) {
+                labels[j].style.color = "#404040";
+                break;
+            }
+        }
+        if( fields[i].value == "" ) {
+            retval = false;
+            msg1a.style.visibility = "visible";
+            msg2.style.visibility = "visible";
+            for( var j = 0; j < labels.length; j++ ) {
+                if( labels[j].htmlFor == fields[i].id ) {
+                    labels[j].style.color = "red";
+                    break;
+                }
+            }
+        }
+        if( fields[i].value != "" ) {
+            fields[i].value = fields[i].value.replace(",",".");
+            if( isNaN(parseFloat(fields[i].value)) || (fields[i].value.split(".").length - 1) > 1 ) {
+                retval = false;
+                msg3.style.visibility = "visible";
+                msg1b.style.visibility = "visible";
+                for( var j = 0; j < labels.length; j++ ) {
+                    if( labels[j].htmlFor == fields[i].id ) {
+                        labels[j].style.color = "blue";
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    // number of spokes must be a multiple of spokes per group
+    if( ( parseFloat(nos.value) % parseFloat(spg.value) ) != 0 ) {
+        msg6.style.visibility = "visible";
+        msg1b.style.visibility = "visible";
+        retval = false;
+    }
+
+    switch(spg.value) {
+        case "1":
+            show_group1();
+            break;
+        case "2":
+            if( retval == true ) {
+                retval = show_group2();
+            } else {
+                show_group2();
+            }
+            break;
+        case "3":
+            if( retval == true ) {
+                retval = show_group3();
+            } else {
+                show_group3();
+            }
+            break;
+        case "4":
+            if( retval == true ) {
+                retval = show_group4();
+            } else {
+                show_group4();
+            }
+            break;
+        case "6":
+            if( retval == true ) {
+                retval = show_group6();
+            } else {
+                show_group6();
+            }
+            break;
+        default:
+            retval = false;
+            msg1b.style.visibility = "visible";
+            msg4.style.visibility = "visible";
+            for( var j = 0; j < labels.length; j++ ) {
+                if( labels[j].htmlFor == "spokes-per-group" ) {
+                    labels[j].style.color = "blue";
+                }
+            }
+            hide_group();
+    }
+    return retval;
+}
+
+function show_group1() {
+    hide_group();
+    var spg = document.getElementById("spokes-per-group");
+    var nos = document.getElementById("number-of-spokes");
+    var diam = document.getElementById("internal-diameter");
+    var ena = false;
+    spg.value = spg.value.trim();
+    if( spg.value == "1" ) {
+        nos.value = nos.value.trim();
+        nos.value = nos.value.replace(",",".");
+        if( nos.value != "" && !isNaN(parseFloat(nos.value)) || (nos.value.split(".").length - 1) == 0 ) {
+            diam.value = diam.value.trim();
+            diam.value = diam.value.replace(",",".");
+            if( diam.value != "" && !isNaN(parseFloat(diam.value)) ) {
+                if( parseFloat(nos.value) > 0.0 && parseFloat(diam.value) > 0.0 ) {
+                    var dist = parseFloat(diam.value) * Math.PI / parseFloat(nos.value);
+                    document.getElementById("distance").style.visibility = "visible";
+                    document.getElementById("distance").innerHTML = "Distance between spokes: <b>" + dist.toFixed(1) +"</b> mm";
+                }
+            }
+        }
+    }
+}
+
+function hide_group() {
+    document.getElementById("distance"  ).style.visibility = "collapse";
+    document.getElementById("distance2a").style.visibility = "collapse";
+    document.getElementById("distance2b").style.visibility = "collapse";
+    document.getElementById("distance2c").style.visibility = "collapse";
+    document.getElementById("distance3a").style.visibility = "collapse";
+    document.getElementById("distance3b").style.visibility = "collapse";
+    document.getElementById("distance4a").style.visibility = "collapse";
+    document.getElementById("distance4b").style.visibility = "collapse";
+    document.getElementById("distance6a").style.visibility = "collapse";
+    document.getElementById("distance6b").style.visibility = "collapse";
+    document.getElementById("distance6c").style.visibility = "collapse";
+    document.getElementById("distance6d").style.visibility = "collapse";
+    document.getElementById("distance12").style.visibility = "collapse";
+    document.getElementById("distance23").style.visibility = "collapse";
+    document.getElementById("distance34").style.visibility = "collapse";
+    document.getElementById("distance45").style.visibility = "collapse";
+    document.getElementById("distance56").style.visibility = "collapse";
+}
+
+function spoke_test( field ) {
+    var retval = true;
+    var labels = document.getElementsByClassName('label');
+    var numberSpokes = parseFloat(document.getElementById("number-of-spokes").value.trim().replace(',', '.'));
+    var internalDiameterRim = parseFloat(document.getElementById("internal-diameter").value.trim().replace(',', '.'));
+    var dist_max = Math.round( (internalDiameterRim * Math.PI) / numberSpokes + 0.5 );
+    var val = parseFloat(document.getElementById(field).value.trim().replace(',', '.') );
+    if( val > dist_max ) {
+        retval = false;
+        var msg5 = document.getElementById("validation-text5");
+        var msg1b = document.getElementById("validation-text1b");
+        var lbl = document.getElementById("distTooLarge");
+        lbl.innerHTML = "Distance too large! (Max. "+dist_max.toFixed(1)+"mm)";
+        msg5.style.visibility = "visible";
+        msg1b.style.visibility = "visible";
+        for( var j = 0; j < labels.length; j++ ) {
+            if( labels[j].htmlFor == field ) {
+                labels[j].style.color = "blue";
+                break;
+            }
+        }
+    }
+    return retval;
+}
+
+function show_group2() {
+    hide_group();
+    document.getElementById("distance2a").style.visibility = "visible";
+    document.getElementById("distance2b").style.visibility = "visible";
+    document.getElementById("distance2c").style.visibility = "visible";
+    document.getElementById("distance12").style.visibility = "visible";
+    return spoke_test('distance12');
+}
+
+function show_group3() {
+    var retval = show_group2();
+    document.getElementById("distance3a").style.visibility = "visible";
+    document.getElementById("distance3b").style.visibility = "visible";
+    document.getElementById("distance23").style.visibility = "visible";
+    if( retval == false ) {
+        spoke_test('distance23');
+        return false;
+    } else {
+        return spoke_test('distance23');
+    }
+}
+
+function show_group4() {
+    var retval = show_group3();
+    document.getElementById("distance4a").style.visibility = "visible";
+    document.getElementById("distance4b").style.visibility = "visible";
+    document.getElementById("distance34").style.visibility = "visible";
+    if( retval == false ) {
+        spoke_test('distance34');
+        return false;
+    } else {
+        return spoke_test('distance34');
+    }
+}
+
+function show_group6() {
+    var retval = show_group4();
+    document.getElementById("distance6a").style.visibility = "visible";
+    document.getElementById("distance6b").style.visibility = "visible";
+    document.getElementById("distance6c").style.visibility = "visible";
+    document.getElementById("distance6d").style.visibility = "visible";
+    document.getElementById("distance45").style.visibility = "visible";
+    document.getElementById("distance56").style.visibility = "visible";
+    if( retval == false ) {
+        spoke_test('distance45')
+        spoke_test('distance56');
+        return false;
+    } else {
+        if( ! spoke_test('distance45') ) {
+            spoke_test('distance56');
+            return false;
+        } else {
+            return  spoke_test('distance56');
+        }
+    }
+}
+
+function ra_de(val) { // RADIANS 2 DEGREES
+    return ((eval(val))*(180/Math.PI));
+}
+
+function de_ra(val) { // DEGREES 2 RADIANS
+    return ((eval(val))*(Math.PI/180));
+}
+
+    </script>
+  </body>
+</html>
