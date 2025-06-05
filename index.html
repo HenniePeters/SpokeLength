@@ -1513,7 +1513,11 @@ function HelpCrossG() {
         case 3: shiftX = -15; shiftY = 11; break;
         case 4: shiftX = -15; shiftY = 10; break;
     }
-    LabelSpoke1(ctx,(centerX + outerRadius * Math.cos(Cbb*Step))+shiftX, (centerY - outerRadius * Math.sin(Cbb*Step))+shiftY );
+    LabelSpoke1( ctx
+               , ( (Sb==0) ? "1" : "2" )
+               , ( centerX + outerRadius * Math.cos(Cbb*Step) ) + shiftX
+               , ( centerY - outerRadius * Math.sin(Cbb*Step) ) + shiftY
+               );
     if( Cbb == 0 ) {
         ctx.beginPath();
         ctx.strokeStyle = ColourRed;
@@ -1567,10 +1571,10 @@ function Rad2Deg( x ) {
     return x * 180 / Math.PI;
 }
 
-function LabelSpoke1( ctx, x, y ) {
+function LabelSpoke1( ctx, lbl, x, y ) {
     ctx.font = "12px 'Dejavu Sans', Verdana";
     ctx.fillStyle = "black";
-    ctx.fillText("1", x, y);
+    ctx.fillText(lbl, x, y);
 }
 
 function HelpCrossNG() {
@@ -1619,7 +1623,11 @@ function HelpCrossNG() {
         case 3: shiftX = -15; shiftY = 11; break;
         case 4: shiftX = -15; shiftY = 10; break;
     }
-    LabelSpoke1(ctx,(centerX + outerRadius * Math.cos(Caa*Step)) + shiftX, (centerY - outerRadius * Math.sin(Caa*Step)) + shiftY );
+    LabelSpoke1( ctx
+               , ( (Sb==0) ? "2" : "1" )
+               , ( centerX + outerRadius * Math.cos(Caa*Step) ) + shiftX
+               , ( centerY - outerRadius * Math.sin(Caa*Step) ) + shiftY
+               );
     if( Math.abs(Ca) == 0 ) {
         ctx.beginPath();
         ctx.strokeStyle = ColourBlue;
