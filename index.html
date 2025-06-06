@@ -330,7 +330,7 @@ function reread() {
     Sb = (document.getElementById("gear").checked ? 0 : 1 );  //Sb = 0 first spoke on gear side, Sb = 1 first spoke on non-gear
     Ca = (crossing) ? Ca : -Ca;
     Cb = (crossing) ? Cb : -Cb;
-    Delta = Math.round( (Math.PI * D) / N + 0.5 );
+    Delta = Math.PI * D / N;
     DeltaMax = (M-1) * Delta;
 }
 
@@ -487,11 +487,12 @@ function display() {
         for( i = 0; i < N; i++ ) {
             AngleRim[i] = AngleRim[i] - AverageRim; // Active rotation of Rim
         }
+        RDr = R + Dr; // Radius + Rim thickness
         for( i = 0; i < N; i++ ) {
             Beta = AngleHub[i] - AngleRim[i];
             Kfactor[i] = Beta / (2*DeltaHub);      // Kfactor[i] = C[i] + i/2 - (M-1)/4 - (X[i]/R - Sigma/R)/(2*DeltaHub) =
-            L2 = Math.pow(R,2) + Math.pow(r[i],2) + Math.pow(Z[i],2) - 2 * R * r[i] * Math.cos(Beta);  // Three-dimensional Pythagoras / Cosine rule
-            Length[i] = Math.sqrt(L2) + Dr;
+            L2 = Math.pow(RDr,2) + Math.pow(r[i],2) + Math.pow(Z[i],2) - 2 * RDr * r[i] * Math.cos(Beta);  // Three-dimensional Pythagoras / Cosine rule
+            Length[i] = Math.sqrt(L2);
         }
         if( verbose ) {
             console.log( "AngleHub[0] AngleRim[0] " + AngleHub[0] + " " + AngleRim[0] );
