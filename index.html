@@ -127,7 +127,7 @@
         </tr><tr class="small" >
           <td>&nbsp;</td>
         </tr><tr>
-          <td id="MissingValue" style="color:red;visibility='hidden'">Missing value(s)!</td>
+          <td id="MissingValue" style="color:red;visibility:hidden">Missing value(s)!</td>
           <td><input disabled onclick="calculate()" id="button-calculate" name="" type="button" value="&nbsp;Calculate&nbsp;" /></td>
         </tr><tr id="Not_A_Number" style="color:blue;visibility:collapse">
           <td colspan="2">Not a number!</td>
@@ -183,7 +183,7 @@ var ColourLighterRed = "#FFE0E0";
 var ColourLighterBlue = "#C0C0FF";
 
 const LineWidth = 2;
-const HelpScreenSize = 175;
+const HelpScreenSize = 375;
 
 function SetSpokeSides() {
     var side = (Sb==0) ? true : false;
@@ -200,6 +200,7 @@ function onload() {
         calculate();
     } else {
         const canvas = document.getElementById("canvas");
+    	canvas.style.visibility = "visible";
         const ctx = canvas.getContext("2d");
         ctx.fillStyle = "#FFFFFF";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -259,35 +260,13 @@ function reread() {
     if( isNaN(Ca) ) {
         Ca = 0;
     } else {
-        Ca = parseFloat(Ca);
-        Ca = Math.round(Ca);
-        if( Ca > Math.trunc( N / 8 )-1 ) {
-            Ca = Math.trunc( N / 8 )-1;
-            if( Ca < 0 ) {
-                document.getElementById("number-of-crossings-non-gear").value = "";
-            } else {
-                document.getElementById("number-of-crossings-non-gear").value = Ca;
-            }
-        } else if( Ca < 0 ) {
-            Ca = 0;
-        }
+        Ca = Math.round( parseFloat(Ca) );
     }
     Cb = document.getElementById("number-of-crossings").value;                    /*crossingsGear*/
     if( isNaN(Cb) ) {
         Cb = 0;
     } else {
-        Cb = parseFloat(Cb);
-        Cb = Math.round(Cb);
-        if( Cb > Math.trunc( N / 8 )-1 ) {
-            Cb = Math.trunc( N / 8 )-1;
-            if( Cb < 0 ) {
-                document.getElementById("number-of-crossings").value = "";
-            } else {
-                document.getElementById("number-of-crossings").value = Cb;
-            }
-        } else if( Cb < 0 ) {
-            Cb = 0;
-        }
+        Cb = Math.round( parseFloat(Cb) );
     }
     M = document.getElementById("spokes-per-group").value;                        /*spokes per group*/
     if( isNaN(M) ) {
@@ -908,6 +887,7 @@ function de_ra(val) { // DEGREES 2 RADIANS
 var done = false;
 function resize() {
     const canvas = document.getElementById("canvas");
+    	canvas.style.visibility = "visible";
     const ctx = canvas.getContext("2d");
     const w = window, d = document, e = d.documentElement, g = d.getElementsByTagName('body')[0];
     var X, Y;
@@ -967,6 +947,7 @@ function wheel() {
         Pattern();
     } else {
         const canvas = document.getElementById("canvas");
+    	canvas.style.visibility = "visible";
         const ctx = canvas.getContext("2d");
         ctx.fillStyle = "#FFFFFF";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -983,19 +964,52 @@ function calculate() {
     wheel();
 }
 
+function isNumber( n ) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
 function FocusOut(x) {
     x.style.background = "white";
+    const canvas = document.getElementById("canvas");
+    canvas.style.visibility = "collapse";
+    reread();
+    if( isNumber( Ca ) ) {
+	    if( Ca != 0 ) {
+    		if( N > 15 ) {
+    			if( Math.abs(Ca) > Math.trunc( N / 8 ) ) {
+        			Ca = Math.trunc( N / 8 );
+            		document.getElementById("number-of-crossings-non-gear").value  = Math.round( Ca );
+    			}
+    		} else {
+    			document.getElementById("number-of-crossings-non-gear").value  = "0";
+    		}
+    	}
+    }
+    if( isNumber( Cb ) ) {
+	    if( Cb != 0 ) {
+    		if( N > 15 ) {
+    			if( Math.abs(Cb) > Math.trunc( N / 8 ) ) {
+        			Cb = Math.trunc( N / 8 );
+            		document.getElementById("number-of-crossings").value  = Math.round( Cb );
+    			}
+    		} else {
+    			document.getElementById("number-of-crossings").value  = "0";
+    		}
+    	}
+    }
 }
 
 function scaleX( x ) {
     // scale from 300*300 to canvas.width, canvas.height
     const canvas = document.getElementById("canvas");
+    canvas.style.visibility = "visible";
     return( parseFloat(x) * canvas.width / 300 );
 }
 
 function scaleY( y ) {
     // scale from 300*300 to canvas.width, canvas.height
     const canvas = document.getElementById("canvas");
+    canvas.style.visibility = "visible";
     return( parseFloat(y) * canvas.height / 300);
 }
 
@@ -1044,12 +1058,14 @@ function PrintHub(ctx) {
 
 function SizeTotalHub(x) {
     screen = 1;
-    x.style.background = "yellow";
+    x.style.background = "#FFFF00";
+    //x.style.background = "yellow";
     HelpTotalHub();
 }
 
 function HelpTotalHub() {
     const canvas = document.getElementById("canvas");
+    canvas.style.visibility = "visible";
     const ctx = canvas.getContext("2d");
     canvas.width = HelpScreenSize;
     canvas.height = HelpScreenSize;
@@ -1087,6 +1103,7 @@ function SizeNonGear(x) {
 
 function HelpSizeNonGear() {
     const canvas = document.getElementById("canvas");
+    canvas.style.visibility = "visible";
     const ctx = canvas.getContext("2d");
     canvas.width = HelpScreenSize;
     canvas.height = HelpScreenSize;
@@ -1124,6 +1141,7 @@ function SizeGear(x) {
 
 function HelpSizeGear() {
     const canvas = document.getElementById("canvas");
+    canvas.style.visibility = "visible";
     const ctx = canvas.getContext("2d");
     canvas.width = HelpScreenSize;
     canvas.height = HelpScreenSize;
@@ -1158,6 +1176,7 @@ function DiamNonGear(x) {
     x.style.background = "yellow";
 
     const canvas = document.getElementById("canvas");
+    canvas.style.visibility = "visible";
     const ctx = canvas.getContext("2d");
     canvas.width = HelpScreenSize;
     canvas.height = HelpScreenSize;
@@ -1192,6 +1211,7 @@ function DiamGear(x) {
     x.style.background = "yellow";
 
     const canvas = document.getElementById("canvas");
+    canvas.style.visibility = "visible";
     const ctx = canvas.getContext("2d");
     canvas.width = HelpScreenSize;
     canvas.height = HelpScreenSize;
@@ -1230,6 +1250,7 @@ function IntRimDiam(x) {
 
 function HelpIntRimDiam() {
     const canvas = document.getElementById("canvas");
+    canvas.style.visibility = "visible";
     const ctx = canvas.getContext("2d");
     canvas.width = HelpScreenSize;
     canvas.height = HelpScreenSize;
@@ -1275,6 +1296,7 @@ function RimThick(x) {
 
 function HelpRimThick() {
     const canvas = document.getElementById("canvas");
+    canvas.style.visibility = "visible";
     const ctx = canvas.getContext("2d");
     canvas.width = "100";
     canvas.height = "100";
@@ -1339,6 +1361,7 @@ function TotalSpokesF(x) {
 
 function TotalSpokes() {
     const canvas = document.getElementById("canvas");
+    canvas.style.visibility = "visible";
     const ctx = canvas.getContext("2d");
     canvas.width = HelpScreenSize;
     canvas.height = HelpScreenSize;
@@ -1390,6 +1413,7 @@ function SPG_F( x ) {
 
 function SPG() {
     const canvas = document.getElementById("canvas");
+    canvas.style.visibility = "visible";
     const ctx = canvas.getContext("2d");
     canvas.width = HelpScreenSize;
     canvas.height = HelpScreenSize;
@@ -1470,6 +1494,7 @@ function CrossG_F( x ) {
 
 function HelpCrossG() {
     const canvas = document.getElementById("canvas");
+    canvas.style.visibility = "visible";
     const ctx = canvas.getContext("2d");
     canvas.width = HelpScreenSize;
     canvas.height = HelpScreenSize;
@@ -1511,8 +1536,8 @@ function HelpCrossG() {
         case 0: shiftX = -12; shiftY = -5; break;
         case 1: shiftX = -13; shiftY = -1; break;
         case 2: shiftX = -15; shiftY = 5; break;
-        case 3: shiftX = -15; shiftY = 11; break;
-        case 4: shiftX = -15; shiftY = 10; break;
+        case 3: shiftX = -16; shiftY = 11; break;
+        case 4: shiftX = -17; shiftY = 12; break;
     }
     LabelSpoke1( ctx
                , ( (Sb==0) ? "1" : "2" )
@@ -1580,6 +1605,7 @@ function LabelSpoke1( ctx, lbl, x, y ) {
 
 function HelpCrossNG() {
     const canvas = document.getElementById("canvas");
+    canvas.style.visibility = "visible";
     const ctx = canvas.getContext("2d");
     canvas.width = HelpScreenSize;
     canvas.height = HelpScreenSize;
@@ -1621,8 +1647,8 @@ function HelpCrossNG() {
         case 0: shiftX = -12; shiftY = -5; break;
         case 1: shiftX = -13; shiftY = -1; break;
         case 2: shiftX = -15; shiftY = 5; break;
-        case 3: shiftX = -15; shiftY = 11; break;
-        case 4: shiftX = -15; shiftY = 10; break;
+        case 3: shiftX = -16; shiftY = 11; break;
+        case 4: shiftX = -17; shiftY = 12; break;
     }
     LabelSpoke1( ctx
                , ( (Sb==0) ? "2" : "1" )
@@ -1701,6 +1727,7 @@ function distance56_F(x) {
 
 function HelpDistance(input) {
     const canvas = document.getElementById("canvas");
+    canvas.style.visibility = "visible";
     const ctx = canvas.getContext("2d");
     canvas.width = HelpScreenSize;
     canvas.height = HelpScreenSize;
@@ -1796,6 +1823,7 @@ function clear() {
     document.getElementById("lblResD").innerHTML = "Spoke 4 "+ (Sb==0?"non-gear":"gear") +" side:";
 
     const canvas = document.getElementById("canvas");
+    canvas.style.visibility = "visible";
     const ctx = canvas.getContext("2d");
     canvas.width = HelpScreenSize;
     canvas.height = HelpScreenSize;
@@ -1832,6 +1860,7 @@ function Pattern() {
         WriteResults();
 
         const canvas = document.getElementById("canvas");
+    	canvas.style.visibility = "visible";
         const ctx = canvas.getContext("2d");
         canvas.width = "400";
         canvas.height = "400";
