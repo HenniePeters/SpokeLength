@@ -5,14 +5,20 @@
     <title>Tommeritis magnificus</title>
     <style>
     html { font-family: 'Dejavu Sans', Verdana; background-color:#FFFFFF; }
-    .inputfield  { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
-    .inputfield2 { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
-    .inputfield3 { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
-    .inputfield4 { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
-    .inputfield5 { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
-    .inputfield6 { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
-    .output      { font-size:18px; color:black; background-color:#D8D8D8; border-style:solid; border-color: #A0A0A0; border-width: 1px; }
-    .small       { font-size:8px; }
+    .inputfield   { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
+    .inputfield2  { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
+    .inputfield3  { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
+    .inputfield4  { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
+    .inputfield5  { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
+    .inputfield6  { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
+    .inputfield7  { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
+    .inputfield8  { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
+    .inputfield9  { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
+    .inputfield10 { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
+    .inputfield11 { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
+    .inputfield12 { font-size:18px; color:black; background-color:white;   border-style:solid; border-color: #A0A0A0; border-width: 1px; }
+    .output       { font-size:18px; color:black; background-color:#D8D8D8; border-style:solid; border-color: #A0A0A0; border-width: 1px; }
+    .small        { font-size:8px; }
     input[type="tel"] {
         border-style: solid;
         border-width: 1px;
@@ -84,7 +90,7 @@
           <td><label class="label" for="spokes-per-group">Nr. of spokes per group:</label></td>
           <td><input onchange="display()" onkeyup="SPG_F(this)" onfocus="SPG_F(this)" onfocusout="validate();FocusOut(this)" class="inputfield" size="5" id="spokes-per-group" type="tel" value='1' /></td>
         </tr><tr id="ValidGroupNumbers" style="visibility:collapse">
-          <td colspan="2" style="color:blue;">Valid numbers: 1,2,4</td>
+          <td colspan="2" style="color:blue;">Valid numbers: 1,2,3,4,6,8,12</td>
         </tr><tr id="NumberOfSpokesDivision" style="visibility:collapse">
           <td colspan="2" style="color:blue;">"NumberOfSpokes" should be a<br>multiple of "SpokesPerGroup".</td>
         </tr><tr>
@@ -97,40 +103,73 @@
 
         </tr><tr id="distance2b" style="visibility:collapse">
           <td><label id="d12" class="label" for="distance12">Distance between spokes 1-2:</label></td>
-          <td><input onchange="validate()" onkeyup="distance12_F(this)" onfocus="distance12_F(this)" onfocusout="validate();FocusOut(this)" class="inputfield2" size="5" id="distance12" type="tel" />&nbsp;mm</td>
+          <td><input onchange="validate()" onkeyup="distance_1_2_F(this)" onfocus="distance_1_2_F(this)" onfocusout="validate();FocusOut(this)" class="inputfield2" size="5" id="distance12" type="tel" />&nbsp;mm</td>
 
         </tr><tr id="distance2c" style="visibility:collapse">
           <td>Spoke 2</td></p>
 
         </tr><tr id="distance3a" style="visibility:collapse">
           <td><label id="d23" class="label" for="distance23">Distance between spokes 2-3:</label></td>
-          <td><input onchange="validate()" onkeyup="distance23_F(this)" onfocus="distance23_F(this)" onfocusout="validate();FocusOut(this)" class="inputfield3" size="5" id="distance23" type="tel" />&nbsp;mm</td>
+          <td><input onchange="validate()" onkeyup="distance_2_3_F(this)" onfocus="distance_2_3_F(this)" onfocusout="validate();FocusOut(this)" class="inputfield3" size="5" id="distance23" type="tel" />&nbsp;mm</td>
 
         </tr><tr id="distance3b" style="visibility:collapse">
           <td>Spoke 3</td>
 
         </tr><tr id="distance4a" style="visibility:collapse">
           <td><label id="d34" class="label" for="distance34">Distance between spokes 3-4:</label></td>
-          <td><input onchange="validate()" onkeyup="distance34_F(this)" onfocus="distance34_F(this)" onfocusout="validate();FocusOut(this)" class="inputfield4" size="5" id="distance34" type="tel" />&nbsp;mm</td>
+          <td><input onchange="validate()" onkeyup="distance_3_4_F(this)" onfocus="distance_3_4_F(this)" onfocusout="validate();FocusOut(this)" class="inputfield4" size="5" id="distance34" type="tel" />&nbsp;mm</td>
 
         </tr><tr id="distance4b" style="visibility:collapse">
           <td>Spoke 4</td>
+		</tr>
 
-        </tr><tr id="distance6a" style="visibility:collapse">
-          <td><label id="d45" class="label" for="distance45">Distance between spokes 4-5:</label></td>
-          <td><input onchange="validate()" onkeyup="distance45_F(this)" onfocus="distance45_F(this)" onfocusout="validate();FocusOut(this)" class="inputfield6" size="5" id="distance45" type="tel" />&nbsp;mm</td>
+        <tr class="distance_4_6" style="visibility:collapse">
+          	<td><label id="d45" class="label" for="distance45">Distance between spokes 4-5:</label></td>
+          	<td><input onchange="validate()" onkeyup="distance_4_5_F(this)" onfocus="distance_4_5_F(this)" onfocusout="validate();FocusOut(this)" class="inputfield6" size="5" id="distance45" type="tel" />&nbsp;mm</td>
+        </tr><tr class="distance_4_6" style="visibility:collapse">
+          	<td>Spoke 5</td>
+        </tr><tr class="distance_4_6" style="visibility:collapse">
+          	<td><label id="d56" class="label" for="distance56">Distance between spokes 5-6:</label></td>
+          	<td><input onchange="validate()" onkeyup="distance_5_6_F(this)" onfocus="distance_5_6_F(this)" onfocusout="validate();FocusOut(this)" class="inputfield6" size="5" id="distance56" type="tel" />&nbsp;mm</td>
+        </tr><tr class="distance_4_6" style="visibility:collapse">
+          	<td>Spoke 6</td>
+        </tr>
 
-        </tr><tr id="distance6b" style="visibility:collapse">
-          <td>Spoke 5</td>
+        <tr class="distance_6_8" style="visibility:collapse">
+          	<td><label id="d67" class="label" for="distance_6_7">Distance between spokes 6-7:</label></td>
+          	<td><input onchange="validate()" onkeyup="distance_6_7_F(this)" onfocus="distance_6_7_F(this)" onfocusout="validate();FocusOut(this)" class="inputfield8" size="5" id="distance_6_7" type="tel" />&nbsp;mm</td>
+        </tr><tr class="distance_6_8" style="visibility:collapse">
+          	<td>Spoke 7</td>
+        </tr><tr class="distance_6_8" style="visibility:collapse">
+          	<td><label id="d78" class="label" for="distance_7_8">Distance between spokes 7-8:</label></td>
+          	<td><input onchange="validate()" onkeyup="distance_7_8_F(this)" onfocus="distance_7_8_F(this)" onfocusout="validate();FocusOut(this)" class="inputfield8" size="5" id="distance_7_8" type="tel" />&nbsp;mm</td>
+        </tr><tr class="distance_6_8" style="visibility:collapse">
+          	<td>Spoke 8</td>
+        </tr>
 
-        </tr><tr id="distance6c" style="visibility:collapse">
-          <td><label id="d56" class="label" for="distance56">Distance between spokes 5-6:</label></td>
-          <td><input onchange="validate()" onkeyup="distance56_F(this)" onfocus="distance56_F(this)" onfocusout="validate();FocusOut(this)" class="inputfield6" size="5" id="distance56" type="tel" />&nbsp;mm</td>
+        <tr class="distance_9_12" style="visibility:collapse">
+          	<td><label id="d89" class="label" for="distance_8_9">Distance between spokes 8-9:</label></td>
+          	<td><input onchange="validate()" onkeyup="distance_8_9_F(this)" onfocus="distance_8_9_F(this)" onfocusout="validate();FocusOut(this)" class="inputfield12" size="5" id="distance_8_9" type="tel" />&nbsp;mm</td>
+        </tr><tr class="distance_9_12" style="visibility:collapse">
+          	<td>Spoke 9</td>
+        </tr><tr class="distance_9_12" style="visibility:collapse">
+          	<td><label id="d910" class="label" for="distance_9_10">Distance between spokes 9-10:</label></td>
+          	<td><input onchange="validate()" onkeyup="distance_9_10_F(this)" onfocus="distance_9_10_F(this)" onfocusout="validate();FocusOut(this)" class="inputfield12" size="5" id="distance_9_10" type="tel" />&nbsp;mm</td>
+        </tr><tr class="distance_9_12" style="visibility:collapse">
+          	<td>Spoke 10</td>
+        </tr><tr class="distance_9_12" style="visibility:collapse">
+          	<td><label id="d1011" class="label" for="distance_10_11">Distance between spokes 10-11:</label></td>
+          	<td><input onchange="validate()" onkeyup="distance_10_11_F(this)" onfocus="distance_10_11_F(this)" onfocusout="validate();FocusOut(this)" class="inputfield12" size="5" id="distance_10_11" type="tel" />&nbsp;mm</td>
+        </tr><tr class="distance_9_12" style="visibility:collapse">
+          	<td>Spoke 11</td>
+        </tr><tr class="distance_9_12" style="visibility:collapse">
+          	<td><label id="d1112" class="label" for="distance_11_12">Distance between spokes 11-12:</label></td>
+          	<td><input onchange="validate()" onkeyup="distance_11_12_F(this)" onfocus="distance_11_12_F(this)" onfocusout="validate();FocusOut(this)" class="inputfield12" size="5" id="distance_11_12" type="tel" />&nbsp;mm</td>
+        </tr><tr class="distance_9_12" style="visibility:collapse">
+          	<td>Spoke 12</td>
+        </tr>
 
-        </tr><tr id="distance6d" style="visibility:collapse">
-          <td>Spoke 6</td>
-
-        </tr><tr class="small" >
+        <tr class="small" >
           <td>&nbsp;</td>
         </tr><tr>
           <td id="MissingValue" style="color:red;visibility:hidden">Missing value(s)!</td>
@@ -160,6 +199,24 @@
         </tr><tr id="resultLineF" style="visibility:collapse;">
           <td><label id="lblResF">Spoke 6:</label></td>
           <td><input disabled class="output" id="resultF" size="5" type="tel" />&nbsp;mm</td>
+        </tr><tr id="resultLineG" style="visibility:collapse;">
+          <td><label id="lblResG">Spoke 7:</label></td>
+          <td><input disabled class="output" id="resultG" size="5" type="tel" />&nbsp;mm</td>
+        </tr><tr id="resultLineH" style="visibility:collapse;">
+          <td><label id="lblResH">Spoke 8:</label></td>
+          <td><input disabled class="output" id="resultH" size="5" type="tel" />&nbsp;mm</td>
+        </tr><tr id="resultLineI" style="visibility:collapse;">
+          <td><label id="lblResI">Spoke 9:</label></td>
+          <td><input disabled class="output" id="resultI" size="5" type="tel" />&nbsp;mm</td>
+        </tr><tr id="resultLineJ" style="visibility:collapse;">
+          <td><label id="lblResJ">Spoke 10:</label></td>
+          <td><input disabled class="output" id="resultJ" size="5" type="tel" />&nbsp;mm</td>
+        </tr><tr id="resultLineK" style="visibility:collapse;">
+          <td><label id="lblResK">Spoke 11:</label></td>
+          <td><input disabled class="output" id="resultK" size="5" type="tel" />&nbsp;mm</td>
+        </tr><tr id="resultLineL" style="visibility:collapse;">
+          <td><label id="lblResL">Spoke 12:</label></td>
+          <td><input disabled class="output" id="resultL" size="5" type="tel" />&nbsp;mm</td>
         <!-- messages -->
         </tr><tr id="RedProvideValue" style="visibility:collapse;">
           <td colspan="2" style="color:red">Please provide the fields marked in red.</td>
@@ -173,10 +230,11 @@
 <script type="text/javascript">
 
 var Ca, Cb, D, D1a, D1b, N, M, A, Ka, Kb, Dr, crossing;
+var Nds ;  // Number of different spokes
 var AngleRim = [];
 var AngleHub = [];
 var HubGearSide = [];
-var verbose = false;
+var verbose = true;
 var Sb;
 var Length = [];
 var screen = 0;
@@ -210,6 +268,15 @@ function onload() {
         const ctx = canvas.getContext("2d");
         ctx.fillStyle = "#FFFFFF";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+}
+
+function RereadDistance( i, lbl ) {
+    distance[i] = document.getElementById(lbl).value.trim().replace(',', '.');
+    if( isNaN(distance[i]) ) {
+        distance[i] = 0;
+    } else {
+        distance[i] = parseFloat(distance[i]);
     }
 }
 
@@ -281,6 +348,7 @@ function reread() {
         M = parseFloat(M);
     }
     distance == [];
+    /*
     distance[0] = document.getElementById("distance12").value.trim().replace(',', '.');
     if( isNaN(distance[0]) ) {
         distance[0] = 0;
@@ -311,6 +379,24 @@ function reread() {
     } else {
         distance[4] = parseFloat(distance[4]);
     }
+    distance[5] = document.getElementById("distance56").value.trim().replace(',', '.');
+    if( isNaN(distance[5]) ) {
+        distance[5] = 0;
+    } else {
+        distance[5] = parseFloat(distance[5]);
+    }
+    */
+    RereadDistance(0,"distance12");
+    RereadDistance(1,"distance23");
+    RereadDistance(2,"distance34");
+    RereadDistance(3,"distance45");
+    RereadDistance(4,"distance56");
+    RereadDistance(5,"distance_6_7");
+    RereadDistance(6,"distance_7_8");
+    RereadDistance(7,"distance_8_9");
+    RereadDistance(8,"distance_9_10");
+    RereadDistance(9,"distance_10_11");
+    RereadDistance(10,"distance_11_12");
     crossing = (document.getElementById("crossing").checked?true:false);
     Sb = (document.getElementById("gear").checked ? 0 : 1 );  //Sb = 0 first spoke on gear side, Sb = 1 first spoke on non-gear
     Ca = (crossing) ? Ca : -Ca;
@@ -499,6 +585,24 @@ function display() {
             }
         }
         SetSpokeSides();
+
+        var flagcontinue = true;
+        Nds = M;
+        console.log("writeResult Nds/4 = " + Nds/4);
+        console.log("writeResult trunc Nds/4 = " + Math.trunc(Nds/4));
+        console.log("writeResult flagcontinue = " + flagcontinue);
+        console.log("writeResult Nds = " + Nds);
+        while (flagcontinue) {
+          console.log("writeResult Nds = " + Nds);
+          if (Nds/4 - Math.trunc(Nds/4) > 0) {
+             Nds = Nds*2;
+          }else{
+            flagcontinue = false;
+          }
+        }
+        console.log("writeResult flagcontinue = " + flagcontinue);
+        console.log("writeResult Nds = " + Nds);
+
         WriteResults();
 
         // all valid now, calculation button is available
@@ -544,14 +648,20 @@ function validate() {
         case "2":
             fieldclass = ".inputfield, .inputfield2";
             break;
-        //case "3":
-        //    fieldclass = ".inputfield, .inputfield2, .inputfield3";
+        case "3":
+            fieldclass = ".inputfield, .inputfield2, .inputfield3";
             break;
         case "4":
             fieldclass = ".inputfield, .inputfield2, .inputfield3, .inputfield4";
             break;
-        //case "6":
-        //    fieldclass = ".inputfield, .inputfield2, .inputfield3, .inputfield4, .inputfield6";
+        case "6":
+            fieldclass = ".inputfield, .inputfield2, .inputfield3, .inputfield4, .inputfield6";
+            break;
+        case "8":
+            fieldclass = ".inputfield, .inputfield2, .inputfield3, .inputfield4, .inputfield6, .inputfield8"
+            break;
+        case "12":
+            fieldclass = ".inputfield, .inputfield2, .inputfield3, .inputfield4, .inputfield6, .inputfield8, .inputfield12";
             break;
         default:
             fieldclass = ".inputfield";
@@ -625,14 +735,11 @@ function validate() {
             }
             break;
         case "3":
-            retval = false;
-            msg4.style.visibility = "visible";
-            hide_group();
-        //    if( retval == true ) {
-        //        retval = show_group3();
-        //    } else {
-        //        show_group3();
-        //    }
+            if( retval == true ) {
+                retval = show_group3();
+            } else {
+                show_group3();
+            }
             break;
         case "4":
             if( retval == true ) {
@@ -647,14 +754,38 @@ function validate() {
             hide_group();
             break;
         case "6":
+            DisplayRows( "distance_4_6", "visible" );
+            if( retval == true ) {
+                retval = show_group6();
+            } else {
+                show_group6();
+            }
+            break;
+        case "8":
+            DisplayRows( "distance_6_8", "visible" );
+            if( retval == true ) {
+                retval = show_group8();
+            } else {
+                show_group8();
+            }
+            break;
+        case "12":
+            DisplayRows( "distance_6_8", "visible" );
+    		DisplayRows( "distance_9_12", "visible" );
+            if( retval == true ) {
+                retval = show_group12();
+            } else {
+                show_group12();
+            }
+            break;
+        case "5":
+        case "7":
+        case "9":
+        case "10":
+        case "11":
             retval = false;
             msg4.style.visibility = "visible";
             hide_group();
-        //    if( retval == true ) {
-        //        retval = show_group6();
-        //    } else {
-        //        show_group6();
-        //    }
             break;
         default:
             retval = false;
@@ -726,111 +857,118 @@ function Check_Cb() {
 }
 
 function WriteResults() {
-        document.getElementById("resultA").value = Length[0].toFixed(0);
-        document.getElementById("resultB").value = Length[1].toFixed(0);
-        document.getElementById("resultC").value = Length[2].toFixed(0);
-        document.getElementById("resultD").value = Length[3].toFixed(0);
-        if( M == 1 ||  M == 2) {
+        document.getElementById("resultLineA").style.visibility = "collapse";
+        document.getElementById("resultLineB").style.visibility = "collapse";
+        document.getElementById("resultLineC").style.visibility = "collapse";
+        document.getElementById("resultLineD").style.visibility = "collapse";
+        document.getElementById("resultLineE").style.visibility = "collapse";
+        document.getElementById("resultLineF").style.visibility = "collapse";
+        document.getElementById("resultLineG").style.visibility = "collapse";
+        document.getElementById("resultLineH").style.visibility = "collapse";
+        document.getElementById("resultLineI").style.visibility = "collapse";
+        document.getElementById("resultLineJ").style.visibility = "collapse";
+        document.getElementById("resultLineK").style.visibility = "collapse";
+        document.getElementById("resultLineL").style.visibility = "collapse";
+
+        document.getElementById("resultA").value = Length[0].toFixed(2);
+        document.getElementById("resultB").value = Length[1].toFixed(2);
+        document.getElementById("resultC").value = Length[2].toFixed(2);
+        document.getElementById("resultD").value = Length[3].toFixed(2);
+        if( Nds == 4 ) {
             document.getElementById("resultLineA").style.visibility = "visible";
             document.getElementById("resultLineB").style.visibility = "visible";
             document.getElementById("resultLineC").style.visibility = "visible";
             document.getElementById("resultLineD").style.visibility = "visible";
-            document.getElementById("resultLineE").style.visibility = "collapse";
-            document.getElementById("resultLineF").style.visibility = "collapse";
-            document.getElementById("lblResA").innerHTML = "Spoke 1 ("+ N/4 +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
-            document.getElementById("lblResB").innerHTML = "Spoke 2 ("+ N/4 +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
-            document.getElementById("lblResC").innerHTML = "Spoke 3 ("+ N/4 +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
-            document.getElementById("lblResD").innerHTML = "Spoke 4 ("+ N/4 +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
-        } else if( M == 3 ) {
-            hide_group();
-            //document.getElementById("resultE").value = Length[4].toFixed(0);
-            //document.getElementById("resultF").value = Length[5].toFixed(0);
+            document.getElementById("lblResA").innerHTML = "Spoke 1 ("+ N/Nds +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
+            document.getElementById("lblResB").innerHTML = "Spoke 2 ("+ N/Nds +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
+            document.getElementById("lblResC").innerHTML = "Spoke 3 ("+ N/Nds +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
+            document.getElementById("lblResD").innerHTML = "Spoke 4 ("+ N/Nds +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
+        } else if( Nds == 8 ) {
+            document.getElementById("resultE").value = Length[4].toFixed(2);
+            document.getElementById("resultF").value = Length[5].toFixed(2);
+            document.getElementById("resultG").value = Length[6].toFixed(2);
+            document.getElementById("resultH").value = Length[7].toFixed(2);
 
-            //document.getElementById("resultLineA").style.visibility = "visible";
-            //document.getElementById("resultLineB").style.visibility = "visible";
-            //document.getElementById("resultLineC").style.visibility = "visible";
-            //document.getElementById("resultLineD").style.visibility = "visible";
-            //document.getElementById("resultLineE").style.visibility = "visible";
-            //document.getElementById("resultLineF").style.visibility = "visible";
-            //document.getElementById("lblResA").innerHTML = "Spoke 1 ("+ N/M +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
-            //document.getElementById("lblResB").innerHTML = "Spoke 2 ("+ N/M +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
-            //document.getElementById("lblResC").innerHTML = "Spoke 3 ("+ N/M +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
-            //document.getElementById("lblResD").innerHTML = "Spoke 4 ("+ N/M +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
-            //document.getElementById("lblResE").innerHTML = "Spoke 5 ("+ N/M +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
-            //document.getElementById("lblResF").innerHTML = "Spoke 6 ("+ N/M +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
-        } else if( M == 4 ) {
             document.getElementById("resultLineA").style.visibility = "visible";
             document.getElementById("resultLineB").style.visibility = "visible";
             document.getElementById("resultLineC").style.visibility = "visible";
             document.getElementById("resultLineD").style.visibility = "visible";
-            document.getElementById("resultLineE").style.visibility = "collapse";
-            document.getElementById("resultLineF").style.visibility = "collapse";
-            document.getElementById("lblResA").innerHTML = "Spoke 1 ("+ N/M +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
-            document.getElementById("lblResB").innerHTML = "Spoke 2 ("+ N/M +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
-            document.getElementById("lblResC").innerHTML = "Spoke 3 ("+ N/M +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
-            document.getElementById("lblResD").innerHTML = "Spoke 4 ("+ N/M +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
-        } else if( M == 5 && M == 6 ) {
-            hide_group();
-            //document.getElementById("resultE").value = Length[4].toFixed(0);
-            //document.getElementById("resultF").value = Length[5].toFixed(0);
+            document.getElementById("resultLineE").style.visibility = "visible";
+            document.getElementById("resultLineF").style.visibility = "visible";
+            document.getElementById("resultLineG").style.visibility = "visible";
+            document.getElementById("resultLineH").style.visibility = "visible";
+            document.getElementById("lblResA").innerHTML = "Spoke 1 ("+ N/Nds +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
+            document.getElementById("lblResB").innerHTML = "Spoke 2 ("+ N/Nds +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
+            document.getElementById("lblResC").innerHTML = "Spoke 3 ("+ N/Nds +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
+            document.getElementById("lblResD").innerHTML = "Spoke 4 ("+ N/Nds +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
+            document.getElementById("lblResE").innerHTML = "Spoke 5 ("+ N/Nds +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
+            document.getElementById("lblResF").innerHTML = "Spoke 6 ("+ N/Nds +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
+            document.getElementById("lblResG").innerHTML = "Spoke 7 ("+ N/Nds +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
+            document.getElementById("lblResH").innerHTML = "Spoke 8 ("+ N/Nds +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
+        } else if( Nds == 12 ) {
+            document.getElementById("resultE").value = Length[4].toFixed(2);
+            document.getElementById("resultF").value = Length[5].toFixed(2);
+            document.getElementById("resultG").value = Length[6].toFixed(2);
+            document.getElementById("resultH").value = Length[7].toFixed(2);
+            document.getElementById("resultI").value = Length[8].toFixed(2);
+            document.getElementById("resultJ").value = Length[9].toFixed(2);
+            document.getElementById("resultK").value = Length[10].toFixed(2);
+            document.getElementById("resultL").value = Length[11].toFixed(2);
 
-            //document.getElementById("resultLineA").style.visibility = "visible";
-            //document.getElementById("resultLineB").style.visibility = "visible";
-            //document.getElementById("resultLineC").style.visibility = "visible";
-            //document.getElementById("resultLineD").style.visibility = "visible";
-            //document.getElementById("resultLineE").style.visibility = "visible";
-            //document.getElementById("resultLineF").style.visibility = "visible";
-            //document.getElementById("lblResA").innerHTML = "Spoke 1 ("+ N/M +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
-            //document.getElementById("lblResB").innerHTML = "Spoke 2 ("+ N/M +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
-            //document.getElementById("lblResC").innerHTML = "Spoke 3 ("+ N/M +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
-            //document.getElementById("lblResD").innerHTML = "Spoke 4 ("+ N/M +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
-            //document.getElementById("lblResE").innerHTML = "Spoke 5 ("+ N/M +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
-            //document.getElementById("lblResF").innerHTML = "Spoke 6 ("+ N/M +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
+            document.getElementById("resultLineA").style.visibility = "visible";
+            document.getElementById("resultLineB").style.visibility = "visible";
+            document.getElementById("resultLineC").style.visibility = "visible";
+            document.getElementById("resultLineD").style.visibility = "visible";
+            document.getElementById("resultLineE").style.visibility = "visible";
+            document.getElementById("resultLineF").style.visibility = "visible";
+            document.getElementById("resultLineG").style.visibility = "visible";
+            document.getElementById("resultLineH").style.visibility = "visible";
+            document.getElementById("resultLineI").style.visibility = "visible";
+            document.getElementById("resultLineJ").style.visibility = "visible";
+            document.getElementById("resultLineK").style.visibility = "visible";
+            document.getElementById("resultLineL").style.visibility = "visible";
+            document.getElementById("lblResA").innerHTML = "Spoke 1 ("+ N/Nds +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
+            document.getElementById("lblResB").innerHTML = "Spoke 2 ("+ N/Nds +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
+            document.getElementById("lblResC").innerHTML = "Spoke 3 ("+ N/Nds +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
+            document.getElementById("lblResD").innerHTML = "Spoke 4 ("+ N/Nds +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
+            document.getElementById("lblResE").innerHTML = "Spoke 5 ("+ N/Nds +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
+            document.getElementById("lblResF").innerHTML = "Spoke 6 ("+ N/Nds +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
+            document.getElementById("lblResG").innerHTML = "Spoke 7 ("+ N/Nds +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
+            document.getElementById("lblResH").innerHTML = "Spoke 8 ("+ N/Nds +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
+            document.getElementById("lblResI").innerHTML = "Spoke 9 ("+ N/Nds +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
+            document.getElementById("lblResJ").innerHTML = "Spoke 10 ("+ N/Nds +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
+            document.getElementById("lblResK").innerHTML = "Spoke 11 ("+ N/Nds +"x) "+ (Sb==0?"gear":"non-gear") +" side:";
+            document.getElementById("lblResL").innerHTML = "Spoke 12 ("+ N/Nds +"x) "+ (Sb==0?"non-gear":"gear") +" side:";
+        } else if( M == 5 || M == 7 || M == 9 || M == 10 || M == 11 || Nds > 12) {
+            hide_group();
         }
 }
 
-function show_group1() {
-    hide_group();
-    var M = document.getElementById("spokes-per-group");
-    var nos = document.getElementById("number-of-spokes");
-    var diam = document.getElementById("internal-diameter");
-    var ena = false;
-    M.value = M.value.trim();
-    if( M.value == "1" ) {
-        nos.value = nos.value.trim();
-        nos.value = nos.value.replace(",",".");
-        if( nos.value != "" && !isNaN(parseFloat(nos.value)) || (nos.value.split(".").length - 1) == 0 ) {
-            diam.value = diam.value.trim();
-            diam.value = diam.value.replace(",",".");
-            if( diam.value != "" && !isNaN(parseFloat(diam.value)) ) {
-                if( parseFloat(nos.value) > 0.0 && parseFloat(diam.value) > 0.0 ) {
-                    var dist = parseFloat(diam.value) * Math.PI / parseFloat(nos.value);
-                    document.getElementById("delta").style.visibility = "visible";
-                    document.getElementById("delta").innerHTML = "Distance between spokes: <b>" + dist.toFixed(1) +"</b> mm";
-                }
-            }
-        }
+function DisplayRows( class_name, state ) {
+    var rows = document.getElementsByClassName(class_name);
+    for( var i = 0; i < rows.length; i++ ) {
+        rows[i].style.visibility = state;
     }
 }
 
 function hide_group() {
     document.getElementById("delta"  ).style.visibility = "collapse";
-    document.getElementById("distance2a").style.visibility = "visible";
+    document.getElementById("distance2a").style.visibility = "collapse";
     document.getElementById("distance2b").style.visibility = "collapse";
     document.getElementById("distance2c").style.visibility = "collapse";
     document.getElementById("distance3a").style.visibility = "collapse";
     document.getElementById("distance3b").style.visibility = "collapse";
     document.getElementById("distance4a").style.visibility = "collapse";
     document.getElementById("distance4b").style.visibility = "collapse";
-    document.getElementById("distance6a").style.visibility = "collapse";
-    document.getElementById("distance6b").style.visibility = "collapse";
-    document.getElementById("distance6c").style.visibility = "collapse";
-    document.getElementById("distance6d").style.visibility = "collapse";
     document.getElementById("distance12").style.visibility = "collapse";
     document.getElementById("distance23").style.visibility = "collapse";
     document.getElementById("distance34").style.visibility = "collapse";
-    document.getElementById("distance45").style.visibility = "collapse";
-    document.getElementById("distance56").style.visibility = "collapse";
+    //document.getElementById("distance45").style.visibility = "collapse";
+    //document.getElementById("distance56").style.visibility = "collapse";
+    //document.getElementById("distance6").style.visibility  = "collapse";
+    DisplayRows( "distance_4_6", "collapse" );
+    DisplayRows( "distance_6_8", "collapse" );
+    DisplayRows( "distance_9_12", "collapse" );
 }
 
 function spoke_test( field ) {
@@ -886,6 +1024,30 @@ function DeltaMaxTest() {
     return retval;
 }
 
+function show_group1() {
+    hide_group();
+    var M = document.getElementById("spokes-per-group");
+    var nos = document.getElementById("number-of-spokes");
+    var diam = document.getElementById("internal-diameter");
+    var ena = false;
+    M.value = M.value.trim();
+    if( M.value == "1" ) {
+        nos.value = nos.value.trim();
+        nos.value = nos.value.replace(",",".");
+        if( nos.value != "" && !isNaN(parseFloat(nos.value)) || (nos.value.split(".").length - 1) == 0 ) {
+            diam.value = diam.value.trim();
+            diam.value = diam.value.replace(",",".");
+            if( diam.value != "" && !isNaN(parseFloat(diam.value)) ) {
+                if( parseFloat(nos.value) > 0.0 && parseFloat(diam.value) > 0.0 ) {
+                    var dist = parseFloat(diam.value) * Math.PI / parseFloat(nos.value);
+                    document.getElementById("delta").style.visibility = "visible";
+                    document.getElementById("delta").innerHTML = "Distance between spokes: <b>" + dist.toFixed(3) +"</b> mm";
+                }
+            }
+        }
+    }
+}
+
 function show_group2() {
     var retval = DeltaMaxTest();
     hide_group();
@@ -929,12 +1091,7 @@ function show_group4() {
 
 function show_group6() {
     var retval = show_group4();
-    document.getElementById("distance6a").style.visibility = "visible";
-    document.getElementById("distance6b").style.visibility = "visible";
-    document.getElementById("distance6c").style.visibility = "visible";
-    document.getElementById("distance6d").style.visibility = "visible";
-    document.getElementById("distance45").style.visibility = "visible";
-    document.getElementById("distance56").style.visibility = "visible";
+    DisplayRows( "distance_4_6", "visible" );
     if( retval == false ) {
         spoke_test('distance45')
         spoke_test('distance56');
@@ -947,6 +1104,50 @@ function show_group6() {
             return  spoke_test('distance56');
         }
     }
+}
+
+function show_group8() {
+    var retval = show_group6();
+    DisplayRows( "distance_6_8", "visible" );
+    if( retval == false ) {
+        spoke_test('distance_6_7')
+        spoke_test('distance_7_8');
+        return false;
+    } else {
+        if( ! spoke_test('distance_6_7') ) {
+            spoke_test('distance_7_8');
+            return false;
+        } else {
+            return spoke_test('distance_7_8');
+        }
+    }
+}
+
+function show_group12() {
+    var retval = show_group8();
+    DisplayRows( "distance_9_12", "visible" );
+    if( retval == false ) {
+        spoke_test('distance_8_9')
+        spoke_test('distance_9_10');
+        spoke_test('distance_10_11');
+        spoke_test('distance_11_12');
+        return false;
+    } else if( ! spoke_test('distance_8_9') ) {
+        spoke_test('distance_9_10');
+        spoke_test('distance_10_11');
+        spoke_test('distance_11_12');
+        return false;
+    } else if( ! spoke_test('distance_9_10') ) {
+        spoke_test('distance_10_11');
+        spoke_test('distance_11_12');
+        return false;
+    } else if( ! spoke_test('distance_10_11') ) {
+        spoke_test('distance_11_12');
+        return false;
+    } else if( ! spoke_test('distance_11_12') ) {
+        return false;
+    }
+    return retval;
 }
 
 function ra_de(val) { // RADIANS 2 DEGREES
@@ -1772,34 +1973,71 @@ function HelpCrossNG() {
     Check_Ca();
 }
 
-function distance12_F(x) {
+function distance_1_2_F(x) {
     x.style.background = "yellow";
     var input = document.getElementById("distance12");
     HelpDistance(input);
 }
 
-function distance23_F(x) {
+function distance_2_3_F(x) {
     x.style.background = "yellow";
     var input = document.getElementById("distance23");
     HelpDistance(input);
 }
 
-function distance34_F(x) {
+function distance_3_4_F(x) {
     x.style.background = "yellow";
     var input = document.getElementById("distance34");
     HelpDistance(input);
 }
 
-function distance45_F(x) {
+function distance_4_5_F(x) {
     x.style.background = "yellow";
     var input = document.getElementById("distance45");
     HelpDistance(input);
 }
 
-function distance56_F(x) {
+function distance_5_6_F(x) {
     x.style.background = "yellow";
     var input = document.getElementById("distance56");
     HelpDistance(input);
+}
+
+function distance_6_7_F(x) {
+    x.style.background = "yellow";
+    var input = document.getElementById("distance_6_7");
+    HelpDistance(input);
+}
+
+function distance_7_8_F(x) {
+    x.style.background = "yellow";
+    var input = document.getElementById("distance_7_8");
+    HelpDistance(input);
+}
+
+function distance_8_9_F(x) {
+    x.style.background = "yellow";
+    var input = document.getElementById("distance_8_9");
+    HelpDistance(input);
+}
+
+function distance_9_10_F(x) {
+    x.style.background = "yellow";
+    var input = document.getElementById("distance_9_10");
+    HelpDistance(input);
+}
+
+function distance_10_11_F(x) {
+    x.style.background = "yellow";
+    var input = document.getElementById("distance_10_11");
+    HelpDistance(input);
+}
+
+function distance_11_12_F(x) {
+    x.style.background = "yellow";
+    var input = document.getElementById("distance_11_12");
+    HelpDistance(input);
+
 }
 
 function HelpDistance(input) {
@@ -2016,4 +2254,3 @@ function Pattern() {
 }
 
 </script>
-
