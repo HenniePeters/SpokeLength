@@ -90,9 +90,9 @@
           <td><label class="label" for="spokes-per-group">Nr. of spokes per group:</label></td>
           <td><input onchange="display()" onkeyup="SPG_F(this)" onfocus="SPG_F(this)" onfocusout="validate();FocusOut(this)" class="inputfield" size="5" id="spokes-per-group" type="tel" value='1' /></td>
         </tr><tr id="ValidGroupNumbers" style="visibility:collapse">
-          <td colspan="2" style="color:blue;">Valid numbers: 1,2,3,4,6,8,12</td>
+          <td colspan="2" id="valid" "style="color:blue;">Valid numbers: 1,2,3,4,6,8,12</td>
         </tr><tr id="NumberOfSpokesDivision" style="visibility:collapse">
-          <td colspan="2" style="color:blue;">"NumberOfSpokes" should be a<br>multiple of "SpokesPerGroup".</td>
+          <td colspan="2" style="color:blue;">Also "NumberOfSpokes" should be a<br>multiple of "SpokesPerGroup".</td>
         </tr><tr>
           <td colspan="2" id="delta" style="visibility:collapse"></td>
         </tr><tr id="distance2a" style="visibility:collapse">
@@ -222,6 +222,9 @@
           <td colspan="2" style="color:red">Please provide the fields marked in red.</td>
         </tr><tr id="BlueCorrectValue" style="visibility:collapse;">
           <td colspan="2" style="color:blue">Please correct the fields marked in blue.</td>
+        </tr>
+        <tr>
+          <td style="padding-top:0; font-size:8px;">v.&nbsp;2026-01</td>
         </tr>
       </table></td><td id="space" style="padding:0;""><canvas id="canvas" style="border: none;"></canvas></td></tr>
     </table>
@@ -1046,6 +1049,7 @@ function show_group1() {
             }
         }
     }
+    document.getElementById("distance2a").style.visibility = "visible";
 }
 
 function show_group2() {
